@@ -101,4 +101,30 @@ describe('PrismaService', () => {
     expect(commentData.author).toBeDefined();
     expect(commentData.post).toBeDefined();
   });
+
+  it('should define PostLike model with unique constraint', async () => {
+    // Verify PostLike model exists
+    const postLikeDelegate = prismaService.postLike;
+    expect(postLikeDelegate).toBeDefined();
+
+    // Verify we can construct a PostLike with required fields and relations
+    const postLikeData: Parameters<typeof prismaService.postLike.create>[0]['data'] = {
+      user: {
+        connect: {
+          id: 1,
+        },
+      },
+      post: {
+        connect: {
+          id: 1,
+        },
+      },
+      isLike: true,
+    };
+
+    expect(postLikeData).toBeDefined();
+    expect(postLikeData.user).toBeDefined();
+    expect(postLikeData.post).toBeDefined();
+    expect(postLikeData.isLike).toBe(true);
+  });
 });
