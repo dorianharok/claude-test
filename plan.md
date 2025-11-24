@@ -7,7 +7,7 @@
 - [x] should define User model with required fields [a0e9657]
 - [x] should define Post model with relations to User [e79715b]
 - [x] should define Comment model with self-referential relation [8ebe362]
-- [ ] should define PostLike model with unique constraint
+- [x] should define PostLike model with unique constraint [71a0ec3]
 - [ ] should define CommentLike model with unique constraint
 - [ ] should define File model with optional Post relation
 - [ ] should create initial migration successfully
