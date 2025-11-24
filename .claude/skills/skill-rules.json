@@ -1,0 +1,320 @@
+{
+    "version": "1.0",
+    "description": "Skill activation triggers for Claude Code. Controls when skills automatically suggest or block actions.",
+    "skills": {
+        "skill-developer": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Meta-skill for creating and managing Claude Code skills",
+            "promptTriggers": {
+                "keywords": [
+                    "skill system",
+                    "create skill",
+                    "add skill",
+                    "skill triggers",
+                    "skill rules",
+                    "hook system",
+                    "skill development",
+                    "skill-rules.json"
+                ],
+                "intentPatterns": [
+                    "(how do|how does|explain).*?skill",
+                    "(create|add|modify|build).*?skill",
+                    "skill.*?(work|trigger|activate|system)"
+                ]
+            }
+        },
+        "backend-dev-guidelines": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Backend development patterns for NestJS/TypeScript",
+            "promptTriggers": {
+                "keywords": [
+                    "backend",
+                    "backend development",
+                    "microservice",
+                    "controller",
+                    "service",
+                    "repository",
+                    "module",
+                    "provider",
+                    "NestJS",
+                    "API",
+                    "endpoint",
+                    "middleware",
+                    "guard",
+                    "interceptor",
+                    "pipe",
+                    "validation",
+                    "DTO",
+                    "Prisma",
+                    "TypeORM",
+                    "database access",
+                    "dependency injection",
+                    "configuration"
+                ],
+                "intentPatterns": [
+                    "(create|add|implement|build).*?(module|controller|service|provider|guard|interceptor|pipe|DTO)",
+                    "(fix|handle|debug).*?(error|exception|backend)",
+                    "(add|implement).*?(middleware|validation|error.*?handling|guard|interceptor)",
+                    "(organize|structure|refactor).*?(backend|service|API|module)",
+                    "(how to|best practice).*?(backend|NestJS|controller|service)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "src/**/*.controller.ts",
+                    "src/**/*.service.ts",
+                    "src/**/*.module.ts",
+                    "src/**/*.provider.ts",
+                    "src/**/*.guard.ts",
+                    "src/**/*.interceptor.ts",
+                    "src/**/*.pipe.ts",
+                    "src/**/*.dto.ts",
+                    "src/**/*.entity.ts",
+                    "src/**/*.repository.ts"
+                ],
+                "pathExclusions": [
+                    "**/*.spec.ts",
+                    "**/*.test.ts"
+                ],
+                "contentPatterns": [
+                    "@Controller",
+                    "@Injectable",
+                    "@Module",
+                    "@Get\\(",
+                    "@Post\\(",
+                    "@Put\\(",
+                    "@Delete\\(",
+                    "@Patch\\(",
+                    "export.*Controller",
+                    "export.*Service",
+                    "export.*Module"
+                ]
+            }
+        },
+        "route-tester": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Testing NestJS API routes and endpoints",
+            "promptTriggers": {
+                "keywords": [
+                    "test route",
+                    "test endpoint",
+                    "test API",
+                    "route testing",
+                    "API testing",
+                    "e2e test",
+                    "integration test",
+                    "authenticated route",
+                    "JWT testing",
+                    "test with auth"
+                ],
+                "intentPatterns": [
+                    "(test|debug|verify).*?(route|endpoint|API)",
+                    "(how to|how do I).*?test.*?(route|endpoint|API)",
+                    "test.*?(authenticated|auth|JWT|guard)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "test/**/*.e2e-spec.ts",
+                    "src/**/*.spec.ts",
+                    "src/**/*.controller.ts"
+                ],
+                "contentPatterns": [
+                    "@Get\\(",
+                    "@Post\\(",
+                    "@Put\\(",
+                    "@Delete\\(",
+                    "@Patch\\(",
+                    "supertest",
+                    "request\\("
+                ]
+            }
+        },
+        "error-tracking": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Sentry error tracking and NestJS exception filters",
+            "promptTriggers": {
+                "keywords": [
+                    "error handling",
+                    "exception",
+                    "exception filter",
+                    "sentry",
+                    "error tracking",
+                    "captureException",
+                    "monitoring",
+                    "performance tracking",
+                    "HttpException"
+                ],
+                "intentPatterns": [
+                    "(add|create|implement|setup).*?(error handling|sentry|error tracking|exception filter)",
+                    "(fix|handle|catch).*?(error|exception)",
+                    "(how to|best practice).*?(error|sentry|monitoring|exception)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "src/**/*.filter.ts",
+                    "src/**/*.interceptor.ts",
+                    "src/**/instrument.ts",
+                    "src/**/sentry*.ts",
+                    "src/**/*Controller.ts",
+                    "src/**/*Service.ts"
+                ],
+                "contentPatterns": [
+                    "@Catch",
+                    "ExceptionFilter",
+                    "@sentry",
+                    "Sentry\\.",
+                    "captureException",
+                    "captureMessage",
+                    "HttpException"
+                ]
+            }
+        },
+        "tdd-planner": {
+            "type": "workflow",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Creates detailed TDD implementation plans broken down into small testable units",
+            "promptTriggers": {
+                "keywords": [
+                    "계획",
+                    "plan",
+                    "플랜",
+                    "수립",
+                    "설계",
+                    "roadmap",
+                    "break down",
+                    "planning",
+                    "development plan",
+                    "implementation plan",
+                    "create plan"
+                ],
+                "intentPatterns": [
+                    "(create|make|generate|build).*?(plan|roadmap)",
+                    "(plan|planning).*?(feature|implementation|development)",
+                    "(break down|breakdown).*?(requirement|feature|task)",
+                    "계획.*?수립",
+                    "플랜.*?(작성|만들)",
+                    "(what|how).*?should.*?plan"
+                ]
+            }
+        },
+        "tdd-guide": {
+            "type": "workflow",
+            "enforcement": "suggest",
+            "priority": "critical",
+            "description": "Test-Driven Development and Tidy First principles following Kent Beck",
+            "promptTriggers": {
+                "keywords": [
+                    "go",
+                    "tdd",
+                    "test",
+                    "tests",
+                    "testing",
+                    "test-driven",
+                    "red-green-refactor",
+                    "refactor",
+                    "refactoring",
+                    "write test",
+                    "failing test",
+                    "tidy first",
+                    "behavioral change",
+                    "structural change"
+                ],
+                "intentPatterns": [
+                    "^go$",
+                    "(write|create|add|implement).*?test",
+                    "(run|execute).*?test",
+                    "(refactor|clean up|tidy)",
+                    "(tdd|test.?driven)",
+                    "red.*?green.*?refactor",
+                    "next.*?test"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/*.spec.ts",
+                    "**/*.test.ts",
+                    "**/test/**/*.ts",
+                    "plan.md"
+                ],
+                "contentPatterns": [
+                    "describe\\(",
+                    "it\\(",
+                    "test\\(",
+                    "expect\\(",
+                    "beforeEach\\(",
+                    "afterEach\\("
+                ]
+            }
+        },
+        "commit-helper": {
+            "type": "workflow",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Automates git commits and updates plan.md with git hashes after implementation. Use when user says 'commit' to commit changes and track implementation progress. Handles TDD workflow completion and plan tracking.",
+            "promptTriggers": {
+                "keywords": [
+                    "commit",
+                    "git commit",
+                    "commit changes",
+                    "create commit",
+                    "track progress",
+                    "update plan",
+                    "commit hash",
+                    "commit message",
+                    "커밋",
+                    "커밋해줘",
+                    "커밋해",
+                    "커밋하기"
+                ],
+                "intentPatterns": [
+                    "^commit$",
+                    "^커밋$",
+                    "(make|create|do).*?commit",
+                    "commit.*?(change|code|work)",
+                    "(track|update).*?plan",
+                    "plan.*?(track|update|hash)",
+                    "커밋.*?(해|하)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "plan.md"
+                ],
+                "contentPatterns": [
+                    "\\[x\\].*?\\[.*?\\]",
+                    "## Phase",
+                    "## Implementation"
+                ]
+            }
+        }
+    },
+    "notes": {
+        "enforcement_types": {
+            "suggest": "Skill suggestion appears but doesn't block execution",
+            "block": "Requires skill to be used before proceeding (guardrail)",
+            "warn": "Shows warning but allows proceeding"
+        },
+        "priority_levels": {
+            "critical": "Highest - Always trigger when matched",
+            "high": "Important - Trigger for most matches",
+            "medium": "Moderate - Trigger for clear matches",
+            "low": "Optional - Trigger only for explicit matches"
+        },
+        "customization": {
+            "pathPatterns": "Adjust to match your NestJS project structure",
+            "keywords": "Add domain-specific terms relevant to your project",
+            "intentPatterns": "Use regex for flexible user intent matching"
+        }
+    }
+}
