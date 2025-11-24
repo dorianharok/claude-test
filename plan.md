@@ -4,7 +4,7 @@
 
 ### Prisma Setup
 - [x] should connect to database successfully [31bf7dd]
-- [ ] should define User model with required fields
+- [x] should define User model with required fields [a0e9657]
 - [ ] should define Post model with relations to User
 - [ ] should define Comment model with self-referential relation
 - [ ] should define PostLike model with unique constraint
