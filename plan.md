@@ -3,7 +3,7 @@
 ## Phase 1: Foundation & Infrastructure
 
 ### Prisma Setup
-- [x] should connect to database successfully
+- [x] should connect to database successfully [31bf7dd]
 - [ ] should define User model with required fields
 - [ ] should define Post model with relations to User
 - [ ] should define Comment model with self-referential relation
