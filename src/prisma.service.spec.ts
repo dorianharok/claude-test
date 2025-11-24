@@ -53,4 +53,26 @@ describe('PrismaService', () => {
     expect(userFields.password).toBeDefined();
     expect(userFields.nickname).toBeDefined();
   });
+
+  it('should define Post model with relations to User', async () => {
+    // Verify Post model exists and has relation to User
+    const postDelegate = prismaService.post;
+    expect(postDelegate).toBeDefined();
+
+    // Verify we can construct a Post with required fields and User relation
+    const postData: Parameters<typeof prismaService.post.create>[0]['data'] = {
+      title: 'Test Post',
+      content: 'Test Content',
+      author: {
+        connect: {
+          id: 1,
+        },
+      },
+    };
+
+    expect(postData).toBeDefined();
+    expect(postData.title).toBe('Test Post');
+    expect(postData.content).toBe('Test Content');
+    expect(postData.author).toBeDefined();
+  });
 });
