@@ -11,4 +11,5 @@ module.exports = {
   testEnvironmentOptions: {
     'localstorage-file': '.jest-localstorage',
   },
+  setupFilesAfterEnv: ['<rootDir>/test-setup.ts'],
 };
