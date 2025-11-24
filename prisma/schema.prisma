@@ -13,9 +13,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Minimal model to generate client
+// User model with required fields for Board API
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  createdAt DateTime @default(now())
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  username     String   @unique
+  password     String
+  nickname     String
+  profileImage String?
+  refreshToken String?  @db.Text
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
