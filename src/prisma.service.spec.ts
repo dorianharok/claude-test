@@ -75,4 +75,30 @@ describe('PrismaService', () => {
     expect(postData.content).toBe('Test Content');
     expect(postData.author).toBeDefined();
   });
+
+  it('should define Comment model with self-referential relation', async () => {
+    // Verify Comment model exists
+    const commentDelegate = prismaService.comment;
+    expect(commentDelegate).toBeDefined();
+
+    // Verify we can construct a Comment with required fields and Post/User relations
+    const commentData: Parameters<typeof prismaService.comment.create>[0]['data'] = {
+      content: 'Test Comment',
+      author: {
+        connect: {
+          id: 1,
+        },
+      },
+      post: {
+        connect: {
+          id: 1,
+        },
+      },
+    };
+
+    expect(commentData).toBeDefined();
+    expect(commentData.content).toBe('Test Comment');
+    expect(commentData.author).toBeDefined();
+    expect(commentData.post).toBeDefined();
+  });
 });

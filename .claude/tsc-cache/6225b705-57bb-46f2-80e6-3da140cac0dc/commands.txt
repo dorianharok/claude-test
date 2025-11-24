@@ -1,0 +1,1 @@
+prisma:build:cd /Users/moonklabs/Desktop/test/prisma && npx prisma generate
